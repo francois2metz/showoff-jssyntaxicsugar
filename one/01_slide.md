@@ -4,9 +4,6 @@
 ## af83
 
 !SLIDE
-# Comment rajouter du sucre syntaxique en modifiant le prototype
-
-!SLIDE
 # Flashback
 
 !SLIDE  bullets incremental
@@ -17,7 +14,20 @@
 * (et je trollais)
 
 !SLIDE bullets
-# Une question: On peut pas étendre le prototype ?
+## Une question :
+# On ne peut pas étendre le prototype ?
+
+!SLIDE
+## Quelques témoignages
+
+!SLIDE
+<blockquote>
+Le jour ou j'ai étendu le prototype, la suite de test a cassé immédiatement. Depuis j'ai changé et je ne le fait plus.
+</blockquote>
+
+<blockquote>
+J'ai incorporé une bibliothèque qui avait étendu le prototype de Array. Ma vie a basculé dans l'enfer.
+</blockquote>
 
 !SLIDE
 # Quelles problèmes ?
@@ -28,9 +38,7 @@
 !SLIDE execute
 
     @@@ javaScript
-    Array.prototype.each = function(callback) {
-        this.forEach(callback)
-    }
+    Array.prototype.each = Array.prototype.forEach
 
     var array = ['Hello', 'World']
     for (var item in array) {
@@ -41,17 +49,19 @@
 ## Risque de collision et différence de comportement
 
 !SLIDE
-### Quelques témoignages
-
-<blockquote>
-Le jour ou j'ai étendu le prototype, la suite de test a cassé immédiatement. Depuis j'ai changé et je ne le fait plus.
-</blockquote>
+# Quelles avantages ?
 
 !SLIDE
+## Sucre Syntaxique++
 
-<blockquote>
-J'ai incorporé une bibliothèque qui avait étendu le prototype de Array. Ma vie a basculé dans l'enfer.
-</blockquote>
+    @@@javascript
+    3.times(function() {})
+
+    "Hello".green
+
+    [1, 2, 3].inject(function(memo, num) {
+                         return memo + num;
+                     }, 0);
 
 !SLIDE
 # Solutions ?
@@ -73,31 +83,18 @@ J'ai incorporé une bibliothèque qui avait étendu le prototype de Array. Ma vi
         },
         enumerable: false // implicit !
     })
-     
+
     var array = ['Hello', 'World']
     for (var item in array) {
        alert(item)
     }
-     
+
 !SLIDE small
 
     @@@javascript
     Object.defineProperty(Array.prototype, 'each', {
         value: ...,
         enumerable: true
-    })
-
-!SLIDE small
-# Getter/setter
-
-    @@@javascript
-    Object.defineProperty(Array.prototype, 'myLength', {
-        get: function() {
-        
-        },
-        set: function(value) {
-        
-        }
     })
 
 !SLIDE center
