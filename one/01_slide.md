@@ -7,7 +7,7 @@
 # Flashback
 
 !SLIDE  bullets incremental
-## Il y a deux mois je vous parlais de
+## Il y a deux mois je parlai de
 
 * code javascript expressif
 * underscore
@@ -30,10 +30,10 @@ J'ai incorporé une bibliothèque qui avait étendu le prototype de Array. Ma vi
 </blockquote>
 
 !SLIDE
-# Quelles problèmes ?
+# Quels problèmes ?
 
 !SLIDE
-## Toute propriété ajouté devient énumérable.
+## Toute propriété ajoutée devient énumérable.
 
 !SLIDE execute
 
